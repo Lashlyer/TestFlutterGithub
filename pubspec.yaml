@@ -142,6 +142,9 @@ flutter:
     - assets/icon-couponGrey.png
     - assets/icon-couponGrey2x.png
     - assets/icon-couponGrey3x.png
+    - assets/img-succes.png
+    - assets/img-succes2x.png
+    - assets/img-succes3x.png
     
 
 

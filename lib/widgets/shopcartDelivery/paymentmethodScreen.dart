@@ -9,7 +9,7 @@ extension PaymentTypeExtension on PaymentType {
       case PaymentType.credicard:
         return '信用卡';
       case PaymentType.atm:
-        return 'ATM';
+        return 'ATM轉帳';
       case PaymentType.storePayment:
         return '超商付款';
       case PaymentType.taiwanPay:

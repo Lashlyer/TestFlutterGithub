@@ -16,7 +16,7 @@ class ShopcartDeliveryModel {
   }
 
   bool isCheckOutValid() {
-    return false;
+    return true;
   }
 
   int getTotal() {

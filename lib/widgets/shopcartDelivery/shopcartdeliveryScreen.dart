@@ -34,7 +34,7 @@ class _ShopCartDeliveryScreenState extends State<ShopCartDeliveryScreen> {
 
 
   void pressChekOut() {
-    print('pressCheckout');
+    viewModel.pressNext(context);
   }
 
   @override
