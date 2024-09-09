@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_list/models/shopcart/order.dart';
+import 'package:shopping_list/models/shopcartdelivery/buyer.dart';
 import 'package:shopping_list/models/shopcartdelivery/shopcartdelivery.dart';
 import 'package:shopping_list/viewmodel/shopcartdelivery_viewmodel.dart';
 import 'package:shopping_list/widgets/shopCartList/stepProgressScreen.dart';
@@ -32,9 +34,16 @@ class _ShopCartDeliveryScreenState extends State<ShopCartDeliveryScreen> {
     super.initState();
   }
 
-
   void pressChekOut() {
     viewModel.pressNext(context);
+  }
+
+  void pressSelectShip(Order order) {
+    viewModel.selectShip(context, order);
+  }
+
+  void pressBuyer(Buyer? buyer) {
+    viewModel.selectBuyer(context, buyer);
   }
 
   @override
@@ -71,23 +80,23 @@ class _ShopCartDeliveryScreenState extends State<ShopCartDeliveryScreen> {
                             ),    
                                              
                             for(var order in widget.model.shopcart.orders)
-                            OrderShipmethodItem(order: order),
+                            OrderShipmethodItem(order: order, selectShip: pressSelectShip),
 
                             const SizedBox(height: 12,),
 
-                            BuyerItem(buyer: widget.model.buyer),
+                            BuyerItem(buyer: widget.model.buyer, pressBuyer: pressBuyer),
 
                             const SizedBox(height: 12,),
 
-                            InvoiceItem(),
+                            InvoiceItem(model: widget.model),
 
                             const SizedBox(height: 12,),
 
-                            PaymentMethodScreen(),
+                            PaymentMethodScreen(model: widget.model),
 
                             const SizedBox(height: 12,),
 
-                            OrderNoteScreen(),
+                            OrderNoteScreen(model: widget.model),
 
                             const SizedBox(height: 12,),
 
@@ -95,7 +104,7 @@ class _ShopCartDeliveryScreenState extends State<ShopCartDeliveryScreen> {
 
                             const SizedBox(height: 12,),
 
-                            DeliveryInfomation()
+                            const DeliveryInfomation()
                           ],
                         ),
                       ),

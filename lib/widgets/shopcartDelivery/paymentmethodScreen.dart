@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/data/categories.dart';
+import 'package:shopping_list/models/shopcartdelivery/shopcartdelivery.dart';
 
 enum PaymentType { credicard, atm, storePayment, taiwanPay }
 
@@ -32,12 +33,17 @@ extension PaymentTypeExtension on PaymentType {
 }
 
 class PaymentMethodScreen extends StatefulWidget {
+
+  final ShopcartDeliveryModel model;
+
+  const PaymentMethodScreen({super.key, required this.model});
+  
   @override
   _PaymentMethodScreenState createState() => _PaymentMethodScreenState();
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
-  PaymentType? _selectedMethod = PaymentType.credicard; // 选中的支付方式
+   // 选中的支付方式
 
   @override
   Widget build(BuildContext context) {
@@ -64,28 +70,28 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           const SizedBox(height: 12),
           _buildRadioOption(
             value: PaymentType.credicard,
-            groupValue: _selectedMethod,
+            groupValue: widget.model.paymentType,
           ),
           const SizedBox(
             height: 16,
           ),
           _buildRadioOption(
             value: PaymentType.atm,
-            groupValue: _selectedMethod,
+            groupValue: widget.model.paymentType,
           ),
           const SizedBox(
             height: 16,
           ),
           _buildRadioOption(
             value: PaymentType.storePayment,
-            groupValue: _selectedMethod,
+            groupValue: widget.model.paymentType,
           ),
           const SizedBox(
             height: 16,
           ),
           _buildRadioOption(
             value: PaymentType.taiwanPay,
-            groupValue: _selectedMethod,
+            groupValue: widget.model.paymentType,
           ),
         ],
       ),
@@ -106,7 +112,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             activeColor: LeezenColor.primary001.getTypeColor(),
             onChanged: (PaymentType? newValue) {
               setState(() {
-                _selectedMethod = newValue;
+                widget.model.paymentType = newValue!;
               });
             },
           ),

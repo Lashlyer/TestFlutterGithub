@@ -3,15 +3,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_list/data/categories.dart';
+import 'package:shopping_list/models/shopcartdelivery/shopcartdelivery.dart';
 
 class OrderNoteScreen extends StatefulWidget {
 
+  final ShopcartDeliveryModel model;
+
+  const OrderNoteScreen({super.key, required this.model});
 
   @override
   State<OrderNoteScreen> createState() => _OrderNoteScreenState();
 }
 
 class _OrderNoteScreenState extends State<OrderNoteScreen> {
+  late TextEditingController _controller; 
+  @override
+  void initState() {
+    _controller = TextEditingController(text: widget.model.orderRemark);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +53,8 @@ class _OrderNoteScreenState extends State<OrderNoteScreen> {
           const SizedBox(height: 12),
 
           TextField(
+            style: const TextStyle(color: Colors.black, fontSize: 14),
+            controller: _controller,
             maxLines: 5,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -49,6 +62,9 @@ class _OrderNoteScreenState extends State<OrderNoteScreen> {
               ),
               contentPadding: const EdgeInsets.all(12)
             ),
+            onChanged: (value) {
+              widget.model.orderRemark = value;
+            },
           )
         ],
       ),

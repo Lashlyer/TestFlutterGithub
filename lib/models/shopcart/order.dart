@@ -1,5 +1,6 @@
 import 'package:shopping_list/models/shopcart/cart.dart';
 import 'package:shopping_list/models/shopcart/orderSetting.dart';
+import 'package:shopping_list/models/shopcart/ordershipmethod.dart';
 import 'package:shopping_list/models/shopcart/shopCartSetting.dart';
 
 class Order {
@@ -10,6 +11,8 @@ class Order {
   final int priceTotal;
 
   final OrderSetting set;
+
+  OrderShipMethod? shipMethod;
 
   Order(
       {required this.carts,

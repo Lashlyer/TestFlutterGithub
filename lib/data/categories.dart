@@ -49,6 +49,7 @@ enum LeezenColor {
   primary001,
   primary002,
   accent001,
+  accent001alpha20,
   greyplaceholder,
   bg002,
   bg003,
@@ -102,6 +103,8 @@ extension LeezenColorExtension on LeezenColor {
         return const Color.fromRGBO(144, 144, 150, 1);
       case LeezenColor.charcoal_15:
         return const Color.fromRGBO(47, 51, 43, 0.15);
+      case LeezenColor.accent001alpha20:
+        return const Color.fromRGBO(251, 121, 86, 0.2);
     }
   }
 }
@@ -117,4 +120,28 @@ const leezenColor = {
 class Leezen {
   const Leezen(this.color);
   final Color color;
+}
+
+enum LeezenDecoration { normal }
+
+extension LeezenDecorationExtention on LeezenDecoration {
+  BoxDecoration customDecoration() {
+    return BoxDecoration(color: Colors.white, boxShadow: [
+      BoxShadow(
+          color: LeezenColor.charcoal_15.getTypeColor(),
+          blurRadius: 5,
+          spreadRadius: 1,
+          offset: const Offset(0, 2))
+    ]);
+  }
+
+  BoxDecoration topShadowDecoration() {
+    return BoxDecoration(color: Colors.white, boxShadow: [
+      BoxShadow(
+          color: LeezenColor.charcoal_15.getTypeColor(),
+          blurRadius: 5,
+          spreadRadius: 1,
+          offset: const Offset(0, -2))
+    ]);
+  }
 }

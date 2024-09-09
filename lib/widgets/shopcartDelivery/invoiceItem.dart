@@ -2,13 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shopping_list/data/categories.dart';
+import 'package:shopping_list/models/shopcartdelivery/shopcartdelivery.dart';
 
 class InvoiceItem extends StatefulWidget {
+  final ShopcartDeliveryModel model;
+
+  const InvoiceItem({super.key, required this.model});
   @override
   State<InvoiceItem> createState() => _InvoiceItemState();
 }
 
 class _InvoiceItemState extends State<InvoiceItem> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,15 +59,19 @@ class _InvoiceItemState extends State<InvoiceItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 24,
                       height: 24,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                              color: LeezenColor.primary001.getTypeColor(),
-                              width: 1.5),
-                          borderRadius: BorderRadius.circular(3)),
+                      child: Checkbox(
+                        value: widget.model.invoiceCheck, 
+                        checkColor: Colors.white,
+                        activeColor: LeezenColor.primary001.getTypeColor(),
+                        onChanged:(value) {
+                          setState(() {
+                            widget.model.invoiceCheck = value!;
+                          });
+                        },
+                      ),
                     ),
                     const SizedBox(
                       width: 12,

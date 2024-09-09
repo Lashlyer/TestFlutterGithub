@@ -2,7 +2,7 @@ class AppUrls {
   static const header = {
     'Content-Type': 'application/json',
     'Authorization':
-        'Bearer 10984|gJY5SBCaLyDeZnZFye7dy4aIlrkbyudJ8WXLn4kAfba39af5'
+        'Bearer 11018|EmOhafQhrB8tRPqHSPNqHoTwwJHKim8Z5Sd7Vth1aca2e84d'
   };
   static const baseUrl = 'https://leezen.app.13930.com/';
   static const shopCartHomelistUrl = '${baseUrl}api/v1/member/cart';
