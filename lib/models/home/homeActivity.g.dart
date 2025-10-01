@@ -13,9 +13,9 @@ HomeActivity _$HomeActivityFromJson(Map<String, dynamic> json) => HomeActivity(
       summary: json['summary'] as String,
       category: json['category'] as String,
       newest: json['newest'] as bool,
-      status: json['status'] as String?,
-      startTime: json['startTime'] as String,
-      endTime: json['endTime'] as String,
+      status: json['status'] ?? '',
+      startTime: json['start_time'] as String,
+      endTime: json['end_time'] as String,
       point: (json['point'] as num).toInt(),
     );
 

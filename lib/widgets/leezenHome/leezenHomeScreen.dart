@@ -31,7 +31,7 @@ class _LeezenHomeScreenState extends State<LeezenHomeScreen> {
       url, 
       headers: {
         'Content-Type': 'application/json',   
-        'Authorization': 'Bearer 10857|zG3k7xUypc1rhqpR4fHCJAqCJqz0RoDhb6GbUR641fd841cd'
+        'Authorization': 'Bearer 11018|EmOhafQhrB8tRPqHSPNqHoTwwJHKim8Z5Sd7Vth1aca2e84d'
         }
       );
 

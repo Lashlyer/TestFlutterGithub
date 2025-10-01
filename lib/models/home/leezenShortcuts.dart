@@ -23,4 +23,8 @@ extension StringExtension on String {
   String withLeeznUrl() {
     return 'https://d1ireumi1ecmwq.cloudfront.net$this';
   }
+
+  String withProductUrl() {
+    return 'https://img.leezen.com.tw$this';
+  }
 }

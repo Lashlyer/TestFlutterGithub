@@ -1,14 +1,14 @@
 class ShopCartSetting {
   // List<Payment> payments;
   // List<Shipment> shipments;
-  // DataCoupon coupon;
+  DataCoupon coupon;
   // List<dynamic> additions;
   Settings settings;
 
   ShopCartSetting({
     // required this.payments,
     // required this.shipments,
-    // required this.coupon,
+    required this.coupon,
     // required this.additions,
     required this.settings,
   });
@@ -17,7 +17,7 @@ class ShopCartSetting {
       ShopCartSetting(
         // payments: List<Payment>.from(json["payments"].map((x) => Payment.fromJson(x))),
         // shipments: List<Shipment>.from(json["shipments"].map((x) => Shipment.fromJson(x))),
-        // coupon: DataCoupon.fromJson(json["coupon"]),
+        coupon: DataCoupon.fromJson(json["coupon"]),
         // additions: List<dynamic>.from(json["additions"].map((x) => x)),
         settings: Settings.fromJson(json["settings"]),
       );
@@ -51,28 +51,28 @@ class ShopCartSetting {
 
 class DataCoupon {
   List<CouponElement> coupons;
-  Map<String, List<int>>? products;
-  Map<String, List<int>> orders;
+  // Map<String, List<int>>? products;
+  // Map<String, List<int>>? orders;
 
   DataCoupon({
     required this.coupons,
-    required this.products,
-    required this.orders,
+    // required this.products,
+    // required this.orders,
   });
 
   factory DataCoupon.fromJson(Map<String, dynamic> json) => DataCoupon(
         coupons: List<CouponElement>.from(
             json["coupons"].map((x) => CouponElement.fromJson(x))),
-        products: json["products"],
-        orders: Map.from(json["orders"]).map((k, v) =>
-            MapEntry<String, List<int>>(k, List<int>.from(v.map((x) => x)))),
+        // products: json["products"],
+        // orders: Map.from(json["orders"]).map((k, v) =>
+        //     MapEntry<String, List<int>>(k, List<int>.from(v.map((x) => x)))),
       );
 
   Map<String, dynamic> toJson() => {
         "coupons": List<dynamic>.from(coupons.map((x) => x.toJson())),
-        "products": products,
-        "orders": Map.from(orders).map((k, v) =>
-            MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x)))),
+        // "products": products,
+        // "orders": Map.from(orders).map((k, v) =>
+        //     MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x)))),
       };
 }
 

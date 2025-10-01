@@ -31,8 +31,8 @@ Map<String, dynamic> _$LeezenHomeToJson(LeezenHome instance) =>
     <String, dynamic>{
       'banners': instance.banners,
       'shortcuts': instance.shortcuts,
-      'promotions': instance.promotions,
-      'activities': instance.activities,
+      // 'promotions': instance.promotions,
+      // 'activities': instance.activities,
       'recipes': instance.recipes,
       'articles': instance.articles,
     };

@@ -14,7 +14,7 @@ part 'LeezenHome.g.dart';
 @JsonSerializable()
 class LeezenHome {
 
-  LeezenHome(this.banners, this.shortcuts, this.promotions, this.activities, this.recipes, this.articles);
+  LeezenHome(this.banners, this.shortcuts, this.promotions ,this.activities, this.recipes, this.articles);
 
   // final List<dynamic> announces;
   final List<HomeBanner> banners;

@@ -17,6 +17,7 @@ class Present {
     int stock;
     int promotionId;
     String promotionName;
+    String? features;
     bool valid;
 
     Present({
@@ -37,6 +38,7 @@ class Present {
         required this.stock,
         required this.promotionId,
         required this.promotionName,
+        required this.features,
         required this.valid,
     });
 
@@ -58,6 +60,7 @@ class Present {
         stock: json["stock"],
         promotionId: json["promotion_id"],
         promotionName: json["promotion_name"],
+        features: json['features'],
         valid: json["valid"],
     );
 

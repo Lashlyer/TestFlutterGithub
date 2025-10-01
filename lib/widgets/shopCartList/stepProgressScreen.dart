@@ -60,7 +60,7 @@ class StepProgressIndicator extends StatelessWidget {
                       CircleAvatar(
                         radius: 12,
                         backgroundColor:
-                            index < currentStep ? Colors.green : Colors.grey,
+                            index < currentStep ? LeezenColor.primary002.getTypeColor() : LeezenColor.greyplaceholder.getTypeColor(),
                         child: Text(
                           '${index + 1}',
                           style: TextStyle(color: Colors.white),
@@ -83,6 +83,7 @@ class StepProgressIndicator extends StatelessWidget {
                   color: index < currentStep
                       ? LeezenColor.primary002.getTypeColor()
                       : LeezenColor.grey003.getTypeColor(),
+                  fontWeight: FontWeight.bold
                 ),
                 textAlign: TextAlign.center,
               ),

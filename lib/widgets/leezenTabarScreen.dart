@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/widgets/ShopCartHome/shopCartHomeScreen.dart';
 import 'package:shopping_list/widgets/exhibitionHome/exhibitionHomeScreen.dart';
+import 'package:shopping_list/widgets/handwritingboard/drawingpage.dart';
+import 'package:shopping_list/widgets/handwritingboard/handwritingboard.dart';
 import 'package:shopping_list/widgets/leezenHome/leezenHomeScreen.dart';
+import 'package:shopping_list/widgets/login/loginScreen.dart';
+import 'package:shopping_list/widgets/orderRecord/orderrecordlistscreen.dart';
+import 'package:shopping_list/widgets/prodcuthome/prodcuthomescreen.dart';
+import 'package:shopping_list/widgets/salepromoperoid/salepromopreiodlistscreen.dart';
+import 'package:shopping_list/widgets/storelist/storelistscreen.dart';
+import 'package:shopping_list/widgets/storelist/youtubeDemo.dart';
 import 'package:shopping_list/widgets/testLeezen.dart';
 
 class LeezenHomeTabarScreen extends StatefulWidget {
@@ -19,11 +27,12 @@ class _LeezenHomeTabarScreenState extends State<LeezenHomeTabarScreen> {
 
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    LeezenHomeScreen(),
-    ExhibitionHomeScreen(),
+  List<Widget> _widgetOptions = <Widget>[
+    ProdcutHomeScreen(),
+    OrderRecordListScreen(),
     TestLeezen(),
-    ShopCartHomeScreen()
+    ShopCartHomeScreen(),
+    YouTubeDemo()
     ];
 
 
@@ -61,6 +70,11 @@ class _LeezenHomeTabarScreenState extends State<LeezenHomeTabarScreen> {
             icon: Image.asset('assets/icon-productTab.png',
                    color:  _selectedIndex == 3 ? LeezenColor.primary001.getTypeColor() : LeezenColor.greyTextSubTitle.getTypeColor(),),
             label: '購物籃'
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/icon-productTab.png',
+                   color:  _selectedIndex == 4 ? LeezenColor.primary001.getTypeColor() : LeezenColor.greyTextSubTitle.getTypeColor(),),
+            label: '消費紀錄'
           )
         ],
         currentIndex: _selectedIndex,

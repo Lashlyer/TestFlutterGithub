@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +9,7 @@ import 'package:shopping_list/widgets/ShopCartHome/headerSection.dart';
 import 'package:shopping_list/widgets/ShopCartHome/shopCartOnlineBasket.dart';
 
 import 'package:shopping_list/widgets/shopCartList/ShopCartListScreen.dart';
+import 'package:shopping_list/widgets/shopCartList/preordershopcartlistscreen.dart';
 
 class ShopCartHomeScreen extends StatefulWidget {
   const ShopCartHomeScreen({super.key});
@@ -28,8 +28,16 @@ class _ShopCartHomeScreenState extends State<ShopCartHomeScreen> {
   }
 
   void _pressShopCartItem(ShopCartHomeGroup item) {
-    Navigator.of(context).push<ShopCartHomeGroup>(CupertinoPageRoute(
-        builder: (ctx) => ShopCartListScreen(name: item.name)));
+    switch (item.getType()) {
+      case ShopCartType.normal:
+        Navigator.of(context).push<ShopCartHomeGroup>(CupertinoPageRoute(
+            builder: (ctx) => ShopCartListScreen(name: item.name)));
+      case ShopCartType.sponsor:
+
+      case ShopCartType.preorder:
+        Navigator.of(context).push<ShopCartHomeGroup>(CupertinoPageRoute(
+            builder: (ctx) => PreorderShopcartListScreen()));
+    }
   }
 
   @override
@@ -61,16 +69,15 @@ class _ShopCartHomeScreenState extends State<ShopCartHomeScreen> {
                       const HeaderSection(),
                       const SizedBox(height: 8),
                       ShopCartOnlineBasket(
-                          datas: value.shopcartGroup.data!, pressItem: _pressShopCartItem)
+                          datas: value.shopcartGroup.data!,
+                          pressItem: _pressShopCartItem)
                     ],
                   ),
                 );
               default:
                 return Container();
             }
-          }
-        ),
-      )
-    );
+          }),
+        ));
   }
 }

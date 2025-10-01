@@ -3,14 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/shopcart/shopCartModel.dart';
 
-class ShopCartBottomBarScreen extends StatelessWidget {
+class ShopCartBottomBarScreen extends StatefulWidget {
 
   final ShopCartModel shopCart;
+  
+  final void Function() pressFullsites;
 
   final void Function() pressNext;
 
-  const ShopCartBottomBarScreen({super.key, required this.shopCart, required this.pressNext});
+  const ShopCartBottomBarScreen({super.key, required this.shopCart, required this.pressNext, required this.pressFullsites});
 
+  @override
+  State<ShopCartBottomBarScreen> createState() => _ShopCartBottomBarScreenState();
+}
+
+class _ShopCartBottomBarScreenState extends State<ShopCartBottomBarScreen> {
   @override
   Widget build(BuildContext context) {
 
@@ -29,11 +36,9 @@ class ShopCartBottomBarScreen extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             child: InkWell(
-              onTap: () {
-                
-              },
+              onTap: widget.pressFullsites,
               child: Row(
                 children: [
                   const Text(
@@ -46,10 +51,14 @@ class ShopCartBottomBarScreen extends StatelessWidget {
                   ),
                   const Expanded(child: SizedBox()),
                   Text(
-                    '選擇',
+                    widget.shopCart.fullSiteCoupon.selects.isEmpty ? 
+                    '選擇' : '已使用(${widget.shopCart.fullSiteCoupon.selects.length})',
                     style: TextStyle(
-                      color: LeezenColor.greyplaceholder.getTypeColor(),
+                      color: widget.shopCart.fullSiteCoupon.selects.isEmpty ?
+                       LeezenColor.greyplaceholder.getTypeColor() : 
+                       LeezenColor.primary002.getTypeColor(),
                       fontSize: 14,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   const SizedBox(width: 14,),
@@ -84,9 +93,9 @@ class ShopCartBottomBarScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 6,),
                     Text(
-                      '\$${shopCart.summary.totalAmount}',
+                      '\$${widget.shopCart.summary.totalAmount}',
                       style: TextStyle(
-                        color: shopCart.valid ? LeezenColor.accent001.getTypeColor() : LeezenColor.greyplaceholder.getTypeColor(),
+                        color: widget.shopCart.valid ? LeezenColor.accent001.getTypeColor() : LeezenColor.greyplaceholder.getTypeColor(),
                         fontSize: 20,
                         fontWeight: FontWeight.bold
                       ),
@@ -98,7 +107,7 @@ class ShopCartBottomBarScreen extends StatelessWidget {
 
                 Center(
                     child: InkWell(
-                      onTap: pressNext,
+                      onTap: widget.pressNext,
                       child: Container(
                         width: 245,
                         height: 40,

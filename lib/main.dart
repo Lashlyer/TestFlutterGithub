@@ -9,6 +9,7 @@ import 'package:shopping_list/widgets/testLeezen.dart';
 
 void main() {
   // WebViewPlatform.instance = WebWebViewPlatform();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 
 }

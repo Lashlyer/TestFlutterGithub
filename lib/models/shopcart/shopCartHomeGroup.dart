@@ -17,6 +17,19 @@ class ShopCartHomeGroup {
 
   factory ShopCartHomeGroup.fromJson(Map<String, dynamic> json) => _$ShopCartHomeGroupFromJson(json);
 
+  ShopCartType getType() {
+    switch (type) {
+      case 'normal':
+        return ShopCartType.normal;
+      case 'donate':
+        return ShopCartType.sponsor;
+      case 'preorder':
+        return ShopCartType.preorder;
+      default:
+        throw ArgumentError('dddd');
+    }
+  }
+
 }
 
 enum ShopCartType {

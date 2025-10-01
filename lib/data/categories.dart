@@ -63,7 +63,8 @@ enum LeezenColor {
   paleGrey,
   greyTextSubTitle,
   greyTextBread,
-  charcoal_15
+  charcoal_15,
+  charcoal_30
 }
 
 extension LeezenColorExtension on LeezenColor {
@@ -103,6 +104,8 @@ extension LeezenColorExtension on LeezenColor {
         return const Color.fromRGBO(144, 144, 150, 1);
       case LeezenColor.charcoal_15:
         return const Color.fromRGBO(47, 51, 43, 0.15);
+      case LeezenColor.charcoal_30:
+        return const Color.fromRGBO(47, 51, 43, 0.3);
       case LeezenColor.accent001alpha20:
         return const Color.fromRGBO(251, 121, 86, 0.2);
     }

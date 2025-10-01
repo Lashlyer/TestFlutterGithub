@@ -12,16 +12,16 @@ HomePromotionItem _$HomePromotionItemFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       brand: json['brand'] as String,
       category: json['category'] as String,
-      type: json['type'] as String?,
+      type: json['type'] ?? '',
       image: json['image'] as String,
-      stamp: json['stamp'] as String?,
+      stamp: json['stamp'] ?? '',
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       promotion: json['promotion'] as String,
       newest: json['newest'] as bool,
       collected: (json['collected'] as num).toInt(),
       status: (json['status'] as num).toInt(),
       price: (json['price'] as num).toInt(),
-      salePrice: (json['salePrice'] as num).toInt(),
+      salePrice: (json['sale_price'] as num).toInt(),
     );
 
 Map<String, dynamic> _$HomePromotionItemToJson(HomePromotionItem instance) =>

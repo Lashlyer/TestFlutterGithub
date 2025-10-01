@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shopping_list/data/categories.dart';
 import 'package:shopping_list/models/shopcart/shopCartPersent.dart';
 
 class BounsSreen extends StatelessWidget {
   final List<Present> presents;
 
-  const BounsSreen({super.key, required this.presents});
+  final void Function(List<Present> presents) pressBonus;
+
+  const BounsSreen({super.key, required this.presents, required this.pressBonus});
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +29,31 @@ class BounsSreen extends StatelessWidget {
             height: 1.5,
             width: double.infinity,
           ),
-          Container(
-            color: LeezenColor.bg002.getTypeColor(),
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                const Text(
-                  '全站滿額贈',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-                const Expanded(child: SizedBox()),
-                Image.asset(
-                  'assets/icon-next-primay002.png',
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.cover,
-                )
-              ],
+          GestureDetector(
+            onTap: () {
+              pressBonus(presents);
+            },
+            child: Container(
+              color: LeezenColor.bg002.getTypeColor(),
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  const Text(
+                    '全站滿額贈',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  Image.asset(
+                    'assets/icon-next-primay002.png',
+                    width: 24,
+                    height: 24,
+                    fit: BoxFit.cover,
+                  )
+                ],
+              ),
             ),
           ),
           Container(
@@ -54,6 +62,7 @@ class BounsSreen extends StatelessWidget {
               padding:
                   const EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 16),
               child: ListView.separated(
+                
                 separatorBuilder: (context, index) {
                   if (index < presents.length - 1) {
                     return const SizedBox(height: 12);
